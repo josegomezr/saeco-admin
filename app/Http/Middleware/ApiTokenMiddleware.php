@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 Use App\Models\ApiToken;
+Use App\Exceptions\RevokedToken;
 Use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 use Closure;
@@ -24,10 +25,17 @@ class ApiTokenMiddleware
         $token = $request->header('Api-Token');
 
         try {
-            ApiToken::where('token', $token)->firstOrFail();
+            $token = ApiToken::where('token', $token)->firstOrFail();
+            
+            if (!$token->activo) {
+                throw new RevokedToken("Token Revocado");
+                
+            }
+            return $next($request);
         } catch (ModelNotFoundException $e) {
             return response('No autorizado, bad token', 403);
+        } catch (RevokedToken $e) {
+            return response('No autorizado, revocado', 403);
         }
-        return $next($request);
     }
 }
