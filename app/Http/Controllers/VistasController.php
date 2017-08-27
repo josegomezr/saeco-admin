@@ -22,7 +22,7 @@ class VistasController extends Controller
      */
     public function vista_servicios()
     {
-        $tabla = "vista_servicios";
+        $tabla="public.vista_servicios";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -41,7 +41,7 @@ class VistasController extends Controller
      */
     public function vista_pago()
     {
-        $tabla = "vista_pago_cont";
+        $tabla="public.vista_pago_cont";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
         $criterios['tipo_doc'] = 'PAGO';
@@ -63,7 +63,7 @@ class VistasController extends Controller
      */
     public function vista_detalle_pago($pago)
     {
-        $tabla = "vista_pago_ser";
+        $tabla="public.vista_pago_ser";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -87,7 +87,7 @@ class VistasController extends Controller
      */
     public function vista_orden()
     {
-        $tabla = "vista_orden";
+        $tabla="public.vista_orden";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -106,7 +106,7 @@ class VistasController extends Controller
      */
     public function vista_contrato()
     {
-        $tabla = "vista_contrato_auditoria";
+        $tabla="public.vista_contrato_auditoria";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -125,7 +125,7 @@ class VistasController extends Controller
      */
     public function vista_contrato_servicio()
     {
-        $tabla = "vista_contrato_servicio";
+        $tabla="public.vista_contrato_servicio";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -144,7 +144,7 @@ class VistasController extends Controller
      */
     public function vista_factura()
     {
-        $tabla = "vista_pago_cont";
+        $tabla="public.vista_pago_cont";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -163,7 +163,7 @@ class VistasController extends Controller
      */
     public function vista_detalle_factura()
     {
-        $tabla = "vista_detalle_factura";
+        $tabla="public.vista_detalle_factura";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 

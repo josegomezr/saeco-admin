@@ -22,7 +22,7 @@ class OperacionesController extends BaseController
      */
     public function grupo_trabajo()
     {
-        $tabla = "grupo_trabajo";
+        $tabla="public.grupo_trabajo";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -42,7 +42,7 @@ class OperacionesController extends BaseController
      */
     public function tecnico()
     {
-        $tabla = "tecnico";
+        $tabla="public.tecnico";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -62,7 +62,7 @@ class OperacionesController extends BaseController
      */
     public function detalle_orden()
     {
-        $tabla = "detalle_orden";
+        $tabla="public.detalle_orden";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -82,7 +82,7 @@ class OperacionesController extends BaseController
      */
     public function tipo_orden()
     {
-        $tabla = "tipo_orden";
+        $tabla="public.tipo_orden";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 

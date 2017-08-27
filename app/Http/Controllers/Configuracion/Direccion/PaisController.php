@@ -49,7 +49,7 @@ class PaisController extends BaseController {
      * Aqui va el nombre de la tabla, es mera conveniencia para no repetirla
      * en todas partes.
      */
-    protected $tabla = "pais";
+    protected $tabla="public.pais";
 
     function __construct()
     {

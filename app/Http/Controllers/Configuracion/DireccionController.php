@@ -23,7 +23,7 @@ class DireccionController extends BaseController
      */
     public function sector()
     {
-        $tabla = "sector";
+        $tabla="public.sector";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -43,7 +43,7 @@ class DireccionController extends BaseController
      */
     public function ciudad()
     {
-        $tabla = "ciudad";
+        $tabla="public.ciudad";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -63,7 +63,7 @@ class DireccionController extends BaseController
      */
     public function estado()
     {
-        $tabla = "estado";
+        $tabla="public.estado";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -83,7 +83,7 @@ class DireccionController extends BaseController
      */
     public function pais()
     {
-        $tabla = "pais";
+        $tabla="public.pais";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -103,7 +103,7 @@ class DireccionController extends BaseController
      */
     public function municipio()
     {
-        $tabla = "municipio";
+        $tabla="public.municipio";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -123,7 +123,7 @@ class DireccionController extends BaseController
      */
     public function parroquia()
     {
-        $tabla = "parroquia";
+        $tabla="public.parroquia";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -143,7 +143,7 @@ class DireccionController extends BaseController
      */
     public function edificio()
     {
-        $tabla = "edificio";
+        $tabla="public.edificio";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -163,7 +163,7 @@ class DireccionController extends BaseController
      */
     public function urbanizacion()
     {
-        $tabla = "urbanizacion";
+        $tabla="public.urbanizacion";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -183,7 +183,7 @@ class DireccionController extends BaseController
      */
     public function manzana()
     {
-        $tabla = "manzana";
+        $tabla="public.manzana";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -203,7 +203,7 @@ class DireccionController extends BaseController
      */
     public function nomenclatura()
     {
-        $tabla = "nomenclatura";
+        $tabla="public.nomenclatura";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 

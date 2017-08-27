@@ -22,7 +22,7 @@ class FacturacionController extends BaseController
      */
     public function oficina_cobro()
     {
-        $tabla = "oficina_cobro";
+        $tabla="public.oficina_cobro";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -41,7 +41,7 @@ class FacturacionController extends BaseController
          */
     public function cobrador()
     {
-        $tabla = "cobrador";
+        $tabla="public.cobrador";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -79,7 +79,7 @@ class FacturacionController extends BaseController
      */
     public function estacion_trabajo()
     {
-        $tabla = "estacion_trabajo";
+        $tabla="public.estacion_trabajo";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -98,7 +98,7 @@ class FacturacionController extends BaseController
      */
     public function caja()
     {
-        $tabla = "caja";
+        $tabla="public.caja";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -117,7 +117,7 @@ class FacturacionController extends BaseController
      */
     public function banco()
     {
-        $tabla = "banco";
+        $tabla="public.banco";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -136,7 +136,7 @@ class FacturacionController extends BaseController
      */
     public function cuenta_bancaria()
     {
-        $tabla = "cuenta_bancaria";
+        $tabla="public.cuenta_bancaria";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -155,7 +155,7 @@ class FacturacionController extends BaseController
      */
     public function tipo_pago()
     {
-        $tabla = "tipo_pago";
+        $tabla="public.tipo_pago";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 

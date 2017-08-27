@@ -23,7 +23,7 @@ class ClienteController extends BaseController
      */
     public function franquicia()
     {
-        $tabla = "franquicia";
+        $tabla="public.franquicia";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -63,7 +63,7 @@ class ClienteController extends BaseController
      */
     public function statuscont()
     {
-        $tabla = "statuscont";
+        $tabla="public.statuscont";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -83,7 +83,7 @@ class ClienteController extends BaseController
      */
     public function grupo_afinidad()
     {
-        $tabla = "grupo_afinidad";
+        $tabla="public.grupo_afinidad";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -103,7 +103,7 @@ class ClienteController extends BaseController
      */
     public function vendedor()
     {
-        $tabla = "vendedor";
+        $tabla="public.vendedor";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -123,7 +123,7 @@ class ClienteController extends BaseController
      */
     public function tipo_cliente()
     {
-        $tabla = "tipo_cliente";
+        $tabla="public.tipo_cliente";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -143,7 +143,7 @@ class ClienteController extends BaseController
      */
     public function tipo_documento()
     {
-        $tabla = "tipo_documento";
+        $tabla="public.tipo_documento";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 

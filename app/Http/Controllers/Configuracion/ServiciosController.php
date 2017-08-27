@@ -22,7 +22,7 @@ class ServiciosController extends BaseController
      */
     public function tipo_pago()
     {
-        $tabla = "tipo_pago";
+        $tabla="public.tipo_pago";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -42,7 +42,7 @@ class ServiciosController extends BaseController
      */
     public function tipo_servicio()
     {
-        $tabla = "tipo_servicio";
+        $tabla="public.tipo_servicio";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -62,7 +62,7 @@ class ServiciosController extends BaseController
      */
     public function paquete()
     {
-        $tabla = "paquete";
+        $tabla="public.paquete";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -82,7 +82,7 @@ class ServiciosController extends BaseController
      */
     public function cant_tv()
     {
-        $tabla = "cant_tv";
+        $tabla="public.cant_tv";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
@@ -102,7 +102,7 @@ class ServiciosController extends BaseController
      */
     public function iva()
     {
-        $tabla = "iva";
+        $tabla="public.iva";
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
 
