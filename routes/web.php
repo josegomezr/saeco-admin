@@ -14,6 +14,7 @@
 */
 
 $app->group([
+    'prefix' => '/v1',
     'middleware' => [ 'origen-permitido', 'api-token']
 ], function ($app) {
     /*
