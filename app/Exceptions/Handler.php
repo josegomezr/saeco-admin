@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
@@ -45,6 +46,28 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+        if(env('APP_DEBUG')){
+           return parent::render($request, $e);
+        }
+        
+        if ($e instanceof ModelNotFoundException) {
+            $ret = [
+                'error' => 'db-no-encontrado',
+                'mensaje' => $e->getMessage(),
+                'codigo' => $e->getCode(),
+            ];
+            return response()->json($ret, 404);
+        }
+
+        if ($e instanceof QueryException ) {
+            $ret = [
+                'error' => 'db-error-consulta',
+                'mensaje' => $e->getMessage(),
+                'codigo' => $e->getCode(),
+            ];
+            return response()->json($ret, 404);
+        }
+
+       return parent::render($request, $e);
     }
 }
