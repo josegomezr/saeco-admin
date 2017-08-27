@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ApiToken extends Model {
+class ApiToken extends Model
+{
     /**
      * The attributes that are mass assignable.
      *

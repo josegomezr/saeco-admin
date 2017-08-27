@@ -16,7 +16,8 @@ class ApiTokenMiddleware
      * @param  \Closure                 $next    siguiente acción
      * @return mixed
      */
-    public function handle($request, Closure $next){
+    public function handle($request, Closure $next)
+    {
         
         if (!$request->hasHeader('Api-Token')) {
             return response('No autorizado', 403);

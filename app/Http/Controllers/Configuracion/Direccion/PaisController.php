@@ -17,7 +17,8 @@ Use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller as BaseController;
 use Illuminate\Support\Arr;
 
-class PaisController extends BaseController {
+class PaisController extends BaseController
+{
     /**
      * campos_validacion
      *
@@ -49,7 +50,7 @@ class PaisController extends BaseController {
      * Aqui va el nombre de la tabla, es mera conveniencia para no repetirla
      * en todas partes.
      */
-    protected $tabla="public.pais";
+    protected $tabla = "public.pais";
 
     function __construct()
     {

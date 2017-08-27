@@ -7,7 +7,8 @@ Use App\Exceptions\OrigenNoPermitido;
 
 use Closure;
 
-class HostPermitidosMiddleware{
+class HostPermitidosMiddleware
+{
     /**
      * Maneja la petición actual.
      *
@@ -15,7 +16,8 @@ class HostPermitidosMiddleware{
      * @param  \Closure                 $next    siguiente acción
      * @return mixed
      */
-    public function handle($request, Closure $next){
+    public function handle($request, Closure $next)
+    {
         
         $ip = $request->ip();
         $origenes = OrigenPermitido::all();

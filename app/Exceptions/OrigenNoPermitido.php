@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
-class OrigenNoPermitido extends \Exception {
+class OrigenNoPermitido extends \Exception
+{
     // ...
 }

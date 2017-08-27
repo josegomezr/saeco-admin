@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
-class RevokedToken extends \Exception {
+class RevokedToken extends \Exception
+{
     // ...
 }
