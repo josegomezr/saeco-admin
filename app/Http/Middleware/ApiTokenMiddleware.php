@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Http\Middleware;
+Use App\Models\ApiToken;
+Use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+use Closure;
+
+class ApiTokenMiddleware
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request $request petición actual
+     * @param  \Closure                 $next    siguiente acción
+     * @return mixed
+     */
+    public function handle($request, Closure $next){
+        
+        if (!$request->hasHeader('Api-Token')) {
+            return response('No autorizado', 403);
+        }
+
+        $token = $request->header('Api-Token');
+
+        try {
+            ApiToken::where('token', $token)->firstOrFail();
+        } catch (ModelNotFoundException $e) {
+            return response('No autorizado, bad token', 403);
+        }
+        return $next($request);
+    }
+}
