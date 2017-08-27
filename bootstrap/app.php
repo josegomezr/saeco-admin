@@ -62,6 +62,7 @@ $app->singleton(
 
 $app->routeMiddleware([
     'api-token' => App\Http\Middleware\ApiTokenMiddleware::class,
+    'origen-permitido' => App\Http\Middleware\HostPermitidosMiddleware::class,
 ]);
 
 /*
