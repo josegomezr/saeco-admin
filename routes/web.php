@@ -13,7 +13,9 @@
 |
 */
 
-$app->group(['middleware' => [ 'origen-permitido', 'api-token']], function ($app) {
+$app->group([
+    'middleware' => [ 'origen-permitido', 'api-token']
+], function ($app) {
     /*
     |--------------------------------------------------------------------------
     | VISTAS DE CONTRATO
@@ -114,7 +116,17 @@ $app->group(['middleware' => [ 'origen-permitido', 'api-token']], function ($app
             $app->get('/urbanizacion', 'Configuracion\DireccionController@urbanizacion');
             $app->get('/manzana', 'Configuracion\DireccionController@manzana');
             $app->get('/nomenclatura', 'Configuracion\DireccionController@nomenclatura');
-            $app->get('/pais', 'Configuracion\DireccionController@pais');
+            
+            /*
+            |------------------------------------------------------------------
+            | Pais
+            |------------------------------------------------------------------
+            */
+            $app->get('/pais', 'Configuracion\Direccion\PaisController@listar');
+            $app->get('/pais/{id}', 'Configuracion\Direccion\PaisController@buscar');
+            $app->post('/pais', 'Configuracion\Direccion\PaisController@crear');
+            $app->put('/pais/{id}', 'Configuracion\Direccion\PaisController@editar');
+            $app->delete('/pais/{id}', 'Configuracion\Direccion\PaisController@eliminar');
         });
 
         /*
