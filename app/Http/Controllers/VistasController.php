@@ -53,11 +53,11 @@ class VistasController extends Controller
         ];
 
         $criterios = ParametroAFiltroSQL::transformar($criterios, $transformaciones);
-
+        
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
             'criterios' => $criterios,
-            'omitir' => ['tipo_doc', 'desde', 'hasta']
+            'omitir' => ['tipo_doc']
             ]
         );
 

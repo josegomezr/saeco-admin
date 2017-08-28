@@ -13,12 +13,13 @@ class ParametroAFiltroSQL
      */
     public static function transformar( $entrada, $transformaciones ){
         $salida = [];
-        
+
         foreach ($transformaciones as $campo => $transformacion) {
             list($operador, $columna) = $transformacion;
-
-            $salida[] = [$columna, $operador, $entrada[$campo]];
-            unset($entrada[$campo]);
+            if (isset($entrada[$campo])) {
+                $salida[] = [$columna, $operador, $entrada[$campo]];
+                unset($entrada[$campo]);
+            }
         }
         
         foreach ($entrada as $campo => $valor) {

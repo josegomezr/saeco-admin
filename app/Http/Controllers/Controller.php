@@ -35,7 +35,7 @@ class Controller extends BaseController
      *
      * Fija la cantidad de elementos por página.
      */
-    public $per_page = 100;
+    public $per_page = 10;
 
     /**
      * listar_tabla_paginada_filtrada
@@ -80,7 +80,7 @@ class Controller extends BaseController
         $criterios = Arr::get($config, 'criterios', []);
         $omitir = Arr::get($config, 'omitir', []);
 
-        $query_string = Arr::except($criterios, $omitir);
+        $query_string = Arr::except(app('request')->except(['page']), $omitir);
 
 
         $result = app('db')->table($tabla)
