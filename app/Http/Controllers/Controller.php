@@ -35,7 +35,7 @@ class Controller extends BaseController
      *
      * Fija la cantidad de elementos por página.
      */
-    public $per_page = 10;
+    public $per_page = 100;
 
     /**
      * listar_tabla_paginada_filtrada
@@ -82,10 +82,23 @@ class Controller extends BaseController
 
         $query_string = Arr::except($criterios, $omitir);
 
-        return app('db')->table($tabla)
-            ->select($campos)
-            ->where($criterios)
-            ->paginate($this->per_page)
+
+        $result = app('db')->table($tabla)
+            ->select($campos);
+
+        foreach ($criterios as $campo => $valor) {
+            $operador = '=';
+            if (is_array($valor)) {
+                $campo = $valor[0];
+                $operador = $valor[1];
+                $valor = $valor[2];    
+            }
+            $result = $result->where($campo, $operador, $valor);
+        }
+
+        $result = $result->paginate($this->per_page)
             ->appends($query_string);
+
+        return $result;
     }
 }

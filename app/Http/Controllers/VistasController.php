@@ -12,6 +12,7 @@
 */
 
 namespace App\Http\Controllers;
+use App\Helpers\ParametroAFiltroSQL;
 
 class VistasController extends Controller
 {
@@ -45,11 +46,18 @@ class VistasController extends Controller
         $campos = ['*'];
         $criterios = app('request')->except(['page']);
         $criterios['tipo_doc'] = 'PAGO';
+        
+        $transformaciones = [
+            'desde' => ['>=', 'fecha_pago'],
+            'hasta' => ['<=', 'fecha_pago']
+        ];
+
+        $criterios = ParametroAFiltroSQL::transformar($criterios, $transformaciones);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
             'criterios' => $criterios,
-            'omitir' => ['tipo_doc']
+            'omitir' => ['tipo_doc', 'desde', 'hasta']
             ]
         );
 

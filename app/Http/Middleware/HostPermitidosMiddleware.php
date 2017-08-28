@@ -18,7 +18,6 @@ class HostPermitidosMiddleware
      */
     public function handle($request, Closure $next)
     {
-        
         $ip = $request->ip();
         $origenes = OrigenPermitido::all();
 
@@ -32,6 +31,7 @@ class HostPermitidosMiddleware
             }
             return response('Host bloqueado', 403);
         }
+
         return response('Host no permitido', 403);
     }
 }

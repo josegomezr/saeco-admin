@@ -235,17 +235,17 @@ $app->group([
 });
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | REFERENCIAS
-    |--------------------------------------------------------------------------
-    |
-    | *1: Factura y Pago son la misma vista, pero están discriminadas por tipo_doc
-    |     dentro del código, está la lógica, es bastante simple y autoexplicativa.
-    |
-    | *2: Los controllers se guardan en [app/Http/Controllers/] y de ahí en adelante
-    |     siguen la PSR-4 para nomenclatura.
-    |
-    | *3: el recurso /configuracion/pais abarca todos los métodos para un CRUD.
-    |
-    */
+/*
+|--------------------------------------------------------------------------
+| REFERENCIAS
+|--------------------------------------------------------------------------
+|
+| *1: Factura y Pago son la misma vista, pero están discriminadas por tipo_doc
+|     dentro del código, está la lógica, es bastante simple y autoexplicativa.
+|
+| *2: Los controllers se guardan en [app/Http/Controllers/] y de ahí en adelante
+|     siguen la PSR-4 para nomenclatura.
+|
+| *3: el recurso /configuracion/pais abarca todos los métodos para un CRUD.
+|
+*/
