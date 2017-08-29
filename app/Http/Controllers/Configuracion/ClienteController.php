@@ -25,7 +25,7 @@ class ClienteController extends BaseController
     {
         $tabla="public.franquicia";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -45,7 +45,7 @@ class ClienteController extends BaseController
     {
         $tabla = empresa
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -65,7 +65,7 @@ class ClienteController extends BaseController
     {
         $tabla="public.statuscont";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -85,7 +85,7 @@ class ClienteController extends BaseController
     {
         $tabla="public.grupo_afinidad";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -105,7 +105,7 @@ class ClienteController extends BaseController
     {
         $tabla="public.vendedor";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -125,7 +125,7 @@ class ClienteController extends BaseController
     {
         $tabla="public.tipo_cliente";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -145,7 +145,7 @@ class ClienteController extends BaseController
     {
         $tabla="public.tipo_documento";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [

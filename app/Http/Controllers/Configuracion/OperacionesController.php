@@ -24,7 +24,7 @@ class OperacionesController extends BaseController
     {
         $tabla="public.grupo_trabajo";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -44,7 +44,7 @@ class OperacionesController extends BaseController
     {
         $tabla="public.tecnico";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -64,7 +64,7 @@ class OperacionesController extends BaseController
     {
         $tabla="public.detalle_orden";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -84,7 +84,7 @@ class OperacionesController extends BaseController
     {
         $tabla="public.tipo_orden";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [

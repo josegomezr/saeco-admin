@@ -19,6 +19,8 @@ use Illuminate\Support\Arr;
 
 class Controller extends BaseController
 {
+    protected $parametros_reservados = ['page', '__no_paginar'];
+
     /**
      * Constructor
      *
@@ -80,7 +82,7 @@ class Controller extends BaseController
         $criterios = Arr::get($config, 'criterios', []);
         $omitir = Arr::get($config, 'omitir', []);
 
-        $query_string = Arr::except(app('request')->except(['page']), $omitir);
+        $query_string = Arr::except(app('request')->except($this->parametros_reservados), $omitir);
 
 
         $result = app('db')->table($tabla)
@@ -96,6 +98,10 @@ class Controller extends BaseController
             $result = $result->where($campo, $operador, $valor);
         }
 
+        if (app('request')->has('__no_paginar')) {
+            return ['data' => $result->get(), 'no_paginar' => true];
+        }
+        
         $result = $result->paginate($this->per_page)
             ->appends($query_string);
 

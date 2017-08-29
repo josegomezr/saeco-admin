@@ -25,7 +25,7 @@ class DireccionController extends BaseController
     {
         $tabla="public.sector";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -45,7 +45,7 @@ class DireccionController extends BaseController
     {
         $tabla="public.ciudad";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -65,7 +65,7 @@ class DireccionController extends BaseController
     {
         $tabla="public.estado";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -85,7 +85,7 @@ class DireccionController extends BaseController
     {
         $tabla="public.pais";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -105,7 +105,7 @@ class DireccionController extends BaseController
     {
         $tabla="public.municipio";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -125,7 +125,7 @@ class DireccionController extends BaseController
     {
         $tabla="public.parroquia";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -145,7 +145,7 @@ class DireccionController extends BaseController
     {
         $tabla="public.edificio";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -165,7 +165,7 @@ class DireccionController extends BaseController
     {
         $tabla="public.urbanizacion";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -185,7 +185,7 @@ class DireccionController extends BaseController
     {
         $tabla="public.manzana";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -205,7 +205,7 @@ class DireccionController extends BaseController
     {
         $tabla="public.nomenclatura";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [

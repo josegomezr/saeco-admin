@@ -24,7 +24,7 @@ class ServiciosController extends BaseController
     {
         $tabla="public.tipo_pago";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -44,7 +44,7 @@ class ServiciosController extends BaseController
     {
         $tabla="public.tipo_servicio";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -64,7 +64,7 @@ class ServiciosController extends BaseController
     {
         $tabla="public.paquete";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -84,7 +84,7 @@ class ServiciosController extends BaseController
     {
         $tabla="public.cant_tv";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -104,7 +104,7 @@ class ServiciosController extends BaseController
     {
         $tabla="public.iva";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [

@@ -24,7 +24,7 @@ class FacturacionController extends BaseController
     {
         $tabla="public.oficina_cobro";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -43,7 +43,7 @@ class FacturacionController extends BaseController
     {
         $tabla="public.cobrador";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -62,7 +62,7 @@ class FacturacionController extends BaseController
     {
         $tabla = punto_venta_bancario
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -81,7 +81,7 @@ class FacturacionController extends BaseController
     {
         $tabla="public.estacion_trabajo";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -100,7 +100,7 @@ class FacturacionController extends BaseController
     {
         $tabla="public.caja";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -119,7 +119,7 @@ class FacturacionController extends BaseController
     {
         $tabla="public.banco";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -138,7 +138,7 @@ class FacturacionController extends BaseController
     {
         $tabla="public.cuenta_bancaria";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -157,7 +157,7 @@ class FacturacionController extends BaseController
     {
         $tabla="public.tipo_pago";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [

@@ -25,7 +25,7 @@ class VistasController extends Controller
     {
         $tabla="public.vista_servicios";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -44,7 +44,7 @@ class VistasController extends Controller
     {
         $tabla="public.vista_pago_cont";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
         $criterios['tipo_doc'] = 'PAGO';
         
         $transformaciones = [
@@ -73,7 +73,7 @@ class VistasController extends Controller
     {
         $tabla="public.vista_pago_ser";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $criterios['tipo_doc'] = 'PAGO';
         $criterios['id_pago'] = $pago;
@@ -97,7 +97,7 @@ class VistasController extends Controller
     {
         $tabla="public.vista_orden";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -116,7 +116,7 @@ class VistasController extends Controller
     {
         $tabla="public.vista_contrato_auditoria";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -135,7 +135,7 @@ class VistasController extends Controller
     {
         $tabla="public.vista_contrato_servicio";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -154,7 +154,7 @@ class VistasController extends Controller
     {
         $tabla="public.vista_pago_cont";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
@@ -173,7 +173,7 @@ class VistasController extends Controller
     {
         $tabla="public.vista_detalle_factura";
         $campos = ['*'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [

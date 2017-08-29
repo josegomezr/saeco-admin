@@ -68,7 +68,7 @@ class PaisController extends BaseController
         // de esa variable.
 
         $campos = ['id_pais', 'nombre_pais'];
-        $criterios = app('request')->except(['page']);
+        $criterios = app('request')->except($this->parametros_reservados);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $this->tabla, [
