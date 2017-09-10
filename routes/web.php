@@ -15,7 +15,7 @@
 
 $app->group([
     'prefix' => '/v1',
-    'middleware' => [ 'origen-permitido', 'api-token']
+    // 'middleware' => [ 'origen-permitido', 'api-token']
 ], function ($app) {
     /*
     |--------------------------------------------------------------------------
@@ -27,6 +27,7 @@ $app->group([
     */
 
     $app->get('/contrato', 'VistasController@vista_contrato');
+    $app->get('/cliente', 'VistasController@vista_cliente');
     $app->get('/contrato/servicio', 'VistasController@vista_contrato_servicio');
 
     /*
@@ -51,7 +52,7 @@ $app->group([
     */
 
     $app->get('/pagos', 'VistasController@vista_pago');
-    $app->get('/pagos/{pago}/detalles', 'VistasController@vista_detalle_pago');
+    $app->get('/pagos/detalles', 'VistasController@vista_detalle_pago');
 
 
     /*
@@ -64,7 +65,7 @@ $app->group([
     */
     $app->get('/facturas', 'VistasController@vista_factura');
 
-    $app->get('/facturas/{pago}/detalles', 'VistasController@vista_detalle_factura');
+    $app->get('/facturas/detalles', 'VistasController@vista_detalle_factura');
 
     /*
     |--------------------------------------------------------------------------

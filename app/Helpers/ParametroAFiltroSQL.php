@@ -16,10 +16,16 @@ class ParametroAFiltroSQL
 
         foreach ($transformaciones as $campo => $transformacion) {
             list($operador, $columna) = $transformacion;
-            if (isset($entrada[$campo])) {
-                $salida[] = [$columna, $operador, $entrada[$campo]];
-                unset($entrada[$campo]);
+            if (!isset($entrada[$campo])) {
+                continue;
+            } 
+
+            $value = $entrada[$campo];
+            if ($operador == 'IN') {
+                $value = explode(',', $value);
             }
+            $salida[] = [$columna, $operador, $value];
+            unset($entrada[$campo]);
         }
         
         foreach ($entrada as $campo => $valor) {

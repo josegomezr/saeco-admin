@@ -43,7 +43,7 @@ class ClienteController extends BaseController
      */
     public function empresa()
     {
-        $tabla = empresa
+        $tabla = "public.empresa"
         $campos = ['*'];
         $criterios = app('request')->except($this->parametros_reservados);
 

@@ -49,7 +49,8 @@ class VistasController extends Controller
         
         $transformaciones = [
             'desde' => ['>=', 'fecha_pago'],
-            'hasta' => ['<=', 'fecha_pago']
+            'hasta' => ['<=', 'fecha_pago'],
+            'ids' => ['IN', 'id_pago'],
         ];
 
         $criterios = ParametroAFiltroSQL::transformar($criterios, $transformaciones);
@@ -71,6 +72,37 @@ class VistasController extends Controller
      */
     public function vista_detalle_pago($pago)
     {
+        $tabla="public.vista_pago_ser";
+        $campos = ['*'];
+        $criterios = app('request')->except($this->parametros_reservados);
+
+        $criterios['tipo_doc'] = 'PAGO';
+        $criterios['id_pago'] = $pago;
+
+        $result = $this->listar_tabla_paginada_filtrada(
+            $tabla, [
+            'criterios' => $criterios,
+            'omitir' => ['tipo_doc', 'id_pago']
+            ]
+        );
+
+        return response()->json($result);
+    }
+
+    /**
+     * vista_detalle_pago_simple
+     *
+     * Retorna la lista de detalles de pagos.
+     */
+    public function vista_detalle_pago_simple()
+    {
+        /*$query = app('db')
+            ->table('pago_factura')
+            ->join('contrato_servicio_deuda', function($join){
+                $join->on('pago_factura.id_cont_serv', 
+                    '=', 'contrato_servicio_deuda.id_cont_serv')
+            });
+            */
         $tabla="public.vista_pago_ser";
         $campos = ['*'];
         $criterios = app('request')->except($this->parametros_reservados);
@@ -156,6 +188,14 @@ class VistasController extends Controller
         $campos = ['*'];
         $criterios = app('request')->except($this->parametros_reservados);
 
+        $transformaciones = [
+            'ids' => ['IN', 'id_pago'],
+            'inicio' => ['>=', 'fecha_pago']
+        ];
+
+        $criterios = ParametroAFiltroSQL::transformar($criterios, $transformaciones);
+        
+
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [
             'criterios' => $criterios
@@ -174,6 +214,36 @@ class VistasController extends Controller
         $tabla="public.vista_detalle_factura";
         $campos = ['*'];
         $criterios = app('request')->except($this->parametros_reservados);
+
+        $transformaciones = [
+            'ids_factura' => ['IN', 'id_pago'],
+        ];
+
+        $criterios = ParametroAFiltroSQL::transformar($criterios, $transformaciones);
+
+        $result = $this->listar_tabla_paginada_filtrada(
+            $tabla, [
+            'criterios' => $criterios
+            ]
+        );
+        return response()->json($result);
+    }
+    /**
+     * vista_cliente
+     *
+     * Retorna la lista de detalles de factura.
+     */
+    public function vista_cliente()
+    {
+        $tabla="public.vista_cliente";
+        $campos = ['*'];
+        $criterios = app('request')->except($this->parametros_reservados);
+
+        $transformaciones = [
+            'ids' => ['IN', 'id_persona'],
+        ];
+
+        $criterios = ParametroAFiltroSQL::transformar($criterios, $transformaciones);
 
         $result = $this->listar_tabla_paginada_filtrada(
             $tabla, [

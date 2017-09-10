@@ -19,7 +19,7 @@ use Illuminate\Support\Arr;
 
 class Controller extends BaseController
 {
-    protected $parametros_reservados = ['page', '__no_paginar'];
+    protected $parametros_reservados = ['page', '__asociar_lista', '__asociar', '__clave', '__no_paginar'];
 
     /**
      * Constructor
@@ -37,7 +37,7 @@ class Controller extends BaseController
      *
      * Fija la cantidad de elementos por página.
      */
-    public $per_page = 10;
+    public $per_page = 30;
 
     /**
      * listar_tabla_paginada_filtrada
@@ -58,7 +58,7 @@ class Controller extends BaseController
      *
      * *1: Esto está diseñado para que Laravel no incluya filtros internos
      *     véase los casos de "pagos" donde el tipo_doc = "FACTURA" pero
-     *     no es necesario exponer ese filtro al querystrng ya que ya está
+     *     no es necesario exponer ese filtro al querystring ya que ya está
      *     siendo aplicado por el Controller internamente.
      */
     public function listar_tabla_paginada_filtrada($tabla, $config)
@@ -84,10 +84,14 @@ class Controller extends BaseController
 
         $query_string = Arr::except(app('request')->except($this->parametros_reservados), $omitir);
 
-
         $result = app('db')->table($tabla)
             ->select($campos);
+        
+        $result = $this->_aplicar_criterios($result, $criterios);
+        return $this->_aplicar_post_proceso($result, $query_string);
+    }
 
+    public function _aplicar_criterios($result, $criterios){
         foreach ($criterios as $campo => $valor) {
             $operador = '=';
             if (is_array($valor)) {
@@ -95,15 +99,76 @@ class Controller extends BaseController
                 $operador = $valor[1];
                 $valor = $valor[2];    
             }
-            $result = $result->where($campo, $operador, $valor);
+            if (is_array($valor)) {
+                $result = $result->whereIn($campo, $valor);
+            }else{
+                $result = $result->where($campo, $operador, $valor);
+            }
         }
+        return $result;
+    }
 
-        if (app('request')->has('__no_paginar')) {
+    public function _aplicar_post_proceso($result, $query_string){
+        
+        $reserved_params = app('request')->only($this->parametros_reservados);
+
+        if ($reserved_params['__no_paginar']) {
             return ['data' => $result->get(), 'no_paginar' => true];
         }
         
         $result = $result->paginate($this->per_page)
             ->appends($query_string);
+        
+        if (isset($reserved_params['__asociar_lista'])) {
+            if (empty($reserved_params['__clave'])) {
+                throw new \RuntimeException("No se puede asociar sin clave");
+            }
+            $data = [];
+            $column = $reserved_params['__clave'];
+            foreach ($result as $row) {
+                $array_key = $row->$column;
+                if (!isset($data[$array_key])) {
+                    $data[$array_key] = [];
+                }
+                $data[$array_key][] = $row;
+            }
+            return [
+                'data' => $data, 
+                'asociar_lista' => true,
+                'current_page' => $result->currentPage(), 
+                'from' => $result->firstItem(), 
+                'to' => $result->lastItem(), 
+                'last_page' => $result->lastPage(), 
+                'per_page' => $result->perPage(), 
+                'total' => $result->total(), 
+                'next_page_url' => $result->nextPageUrl(),
+                'prev_page_url' => $result->previousPageUrl(),
+            ];
+        }
+
+        if (isset($reserved_params['__asociar'])) {
+            if (empty($reserved_params['__clave'])) {
+                throw new \RuntimeException("No se puede asociar sin clave");
+            }
+            $data = [];
+            $column = $reserved_params['__clave'];
+            foreach ($result as $row) {
+                $array_key = $row->$column;
+                $data[$array_key] = $row;
+            }
+            return [
+                'data' => $data, 
+                'asociar' => true,
+                'current_page' => $result->currentPage(), 
+                'from' => $result->firstItem(), 
+                'to' => $result->lastItem(), 
+                'last_page' => $result->lastPage(), 
+                'per_page' => $result->perPage(), 
+                'total' => $result->total(), 
+                'next_page_url' => $result->nextPageUrl(),
+                'prev_page_url' => $result->previousPageUrl(),
+            ];
+        }
 
         return $result;
     }
